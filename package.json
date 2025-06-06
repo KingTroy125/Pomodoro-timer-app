@@ -11,7 +11,8 @@
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
-    "publish": "electron-forge publish"
+    "publish": "electron-forge publish",
+    "generate-icons": "electron-icon-maker --input=./source-icon.png --output=./assets"
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.1"
@@ -25,7 +26,14 @@
     "@electron-forge/plugin-auto-unpack-natives": "^7.8.1",
     "@electron-forge/plugin-fuses": "^7.8.1",
     "@electron/fuses": "^1.8.0",
-    "electron": "^36.4.0"
+    "electron": "^36.4.0",
+    "electron-icon-maker": "^0.0.5"
   },
-  "productName": "my-app"
+  "productName": "Pomodoro Timer",
+  "overrides": {
+    "semver": "^7.5.3",
+    "minimatch": "^5.1.0",
+    "json5": "^2.2.3",
+    "glob-parent": "^6.0.2"
+  }
 }

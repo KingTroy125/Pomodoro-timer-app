@@ -3,44 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pomodoro Timer</title>
+    <title>Glassmorphic Pomodoro Timer</title>
+    <link rel="icon" href="./assets/icon.png" type="image/x-icon">
     <link rel="stylesheet" href="index.css">
-    <link rel="icon" href="../assets/icon.png">
 </head>
 <body>
     <div class="container">
-        <h1>Pomodoro Timer</h1>
-        
-        <div class="session-type" id="sessionType">Work Session</div>
-        
-        <div class="timer-display" id="timerDisplay">
-            <div class="time-display" id="timeDisplay">25:00</div>
-            <div class="progress-bar">
-                <div class="progress-fill" id="progressFill"></div>
-            </div>
+        <div class="timer-header">
+            <div class="session-type" id="sessionType">Focus Time</div>
+            <div class="session-counter">Session <span id="sessionCount">1</span></div>
         </div>
-        
+
+        <div class="progress-ring">
+            <svg>
+                <circle class="progress-ring__background" cx="100" cy="100" r="90"></circle>
+                <circle class="progress-ring__progress" cx="100" cy="100" r="90" id="progressCircle"></circle>
+            </svg>
+            <div class="timer-display-ring" id="timerDisplay">25:00</div>
+        </div>
+
         <div class="controls">
-            <button id="startBtn">Start</button>
-            <button id="pauseBtn" disabled>Pause</button>
-            <button id="resetBtn">Reset</button>
+            <button class="btn" id="resetBtn">Reset</button>
+            <button class="btn primary" id="startBtn">Start</button>
+            <button class="btn" id="skipBtn">Skip</button>
         </div>
-        
-        <div class="settings">
-            <div class="setting-group">
-                <label for="workTime">Work</label>
-                <input type="number" id="workTime" value="25" min="1" max="60">
-            </div>
-            <div class="setting-group">
-                <label for="breakTime">Break</label>
-                <input type="number" id="breakTime" value="5" min="1" max="30">
-            </div>
-        </div>
-        
+
         <div class="stats">
-            Sessions completed: <span id="sessionsCount">0</span>
+            <div class="stat-item">
+                <span class="stat-value" id="completedSessions">0</span>
+                <span class="stat-label">Completed</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" id="totalTime">0h 0m</span>
+                <span class="stat-label">Total Time</span>
+            </div>
         </div>
     </div>
+
+    <div class="notification" id="notification"></div>
 
     <script src="script.js"></script>
 </body>

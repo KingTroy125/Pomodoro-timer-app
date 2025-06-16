@@ -2,8 +2,9 @@
 
 A clean, minimalist Electron-based desktop application for time management using the Pomodoro Technique.
 
-![Pomodoro Timer Screenshot](assets/screenshot.png)
 ![Pomodoro Timer Icon](assets/icon.png)
+
+![Pomodoro Timer Screenshot](assets/Screenshot%202025-06-16%20191103.png)
 
 ## Features
 
@@ -45,6 +46,56 @@ If you prefer to build the application yourself:
    npm run make
    ```
    The packaged applications will be available in the `out/make` directory.
+
+## Creating Installers
+
+This project uses Electron Forge for packaging and creating installers. The following installers are configured:
+
+### Windows Installer
+
+Run the following command to create a Windows installer (`.exe`):
+```
+npm run make -- --platform win32
+```
+
+The Windows installer will be created in `out/make/squirrel.windows/x64/`.
+
+### macOS Installer
+
+Run the following command to create a macOS package (`.zip`):
+```
+npm run make -- --platform darwin
+```
+
+The macOS package will be created in `out/make/zip/darwin/`.
+
+### Linux Installer
+
+Run the following command to create a Linux Debian package (`.deb`):
+```
+npm run make -- --platform linux
+```
+
+The Linux package will be created in `out/make/deb/x64/`.
+
+### All Platforms
+
+To create installers for all configured platforms (requires appropriate development environment):
+```
+npm run make
+```
+
+## Customizing Installers
+
+Installer configurations are defined in the `forge.config.js` file. You can customize:
+
+- Application icon
+- Executable name
+- Installer name
+- Shortcut behavior
+- And more
+
+For more details on customization options, refer to the [Electron Forge documentation](https://www.electronforge.io/config/makers).
 
 ## Usage
 

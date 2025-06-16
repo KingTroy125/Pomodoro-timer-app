@@ -11,10 +11,70 @@ body {
     background-size: 400% 400%;
     animation: gradientShift 180s ease-in-out infinite;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
     overflow: hidden;
     position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.titlebar {
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(20px);
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    -webkit-app-region: drag;
+    user-select: none;
+    z-index: 1000;
+}
+
+.titlebar-text {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.window-controls {
+    display: flex;
+    gap: 8px;
+    -webkit-app-region: no-drag;
+}
+
+.control {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.control:hover {
+    opacity: 0.8;
+}
+
+.minimize {
+    background: #fbbf24;
+}
+
+.maximize {
+    background: #22c55e;
+}
+
+.close {
+    background: #ef4444;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
 }
 
 /* Animated background particles */
@@ -26,10 +86,11 @@ body::before {
     width: 100%;
     height: 100%;
     background-image: 
-        radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 40% 80%, rgba(120, 219, 255, 0.1) 0%, transparent 50%);
+        radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(120, 219, 255, 0.05) 0%, transparent 50%);
     animation: float 20s ease-in-out infinite;
+    z-index: 0;
 }
 
 @keyframes float {
@@ -69,6 +130,8 @@ body::before {
     position: relative;
     z-index: 1;
     min-width: 400px;
+    max-width: 500px;
+    width: 100%;
     transition: all 0.3s ease;
 }
 
@@ -239,10 +302,22 @@ body::before {
 }
 
 @media (max-width: 480px) {
+    .titlebar {
+        padding: 0 12px;
+    }
+    
+    .titlebar-text {
+        font-size: 12px;
+    }
+    
+    .main-content {
+        padding: 1rem;
+    }
+    
     .container {
         min-width: 320px;
         padding: 2rem;
-        margin: 1rem;
+        margin: 0;
     }
     
     .timer-display {
